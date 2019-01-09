@@ -43,7 +43,7 @@ public class MessageEntity {
         this.toAccountId = toAccountId;
     }
 
-    public Date getTime() {
+    public java.sql.Date getTime() {
         return time;
     }
 
