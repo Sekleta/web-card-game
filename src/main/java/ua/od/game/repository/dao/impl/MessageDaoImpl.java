@@ -20,19 +20,19 @@ public class MessageDaoImpl implements MessageDao {
 
     @Override
     public Boolean sendMessage(MessageEntity message) {
-      boolean messageList = SqlHelper.prepareStatement("INSERT INTO Message (text, fromAccountId, toAccountId, time)" +
+      boolean isOk = SqlHelper.prepareStatement("INSERT INTO Message (text, fromAccountId, toAccountId, time)" +
               " values (?,?,?,?)", pstmt -> {
           pstmt.setString(1, message.getText());
           pstmt.setInt(2, message.getFromAccountId());
           pstmt.setInt(3, message.getToAccountId());
           pstmt.setDate(4, message.getTime());
 
-          return pstmt.executeUpdate() > 0 ? message.getText() : null;
+          return pstmt.executeUpdate() > 0;
       });
-        if(!messageList) {
-            LOG.warning("This token is wrong!!!!");
+        if(!isOk) {
+            LOG.warning("Message was not delivered!");
         }
-        return messageList;
+        return isOk;
 
     }
 }
