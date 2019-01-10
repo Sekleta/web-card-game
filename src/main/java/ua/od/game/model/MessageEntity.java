@@ -9,11 +9,6 @@ public class MessageEntity {
     private Integer toAccountId;
     private Date time;
 
-<<<<<<< HEAD
-    public MessageEntity () {}
-
-=======
->>>>>>> ec350be74a77872a13d9b2aaedea7c845166f66b
     public Integer getId() {
         return id;
     }
@@ -38,27 +33,15 @@ public class MessageEntity {
         this.fromAccountId = fromAccountId;
     }
 
-<<<<<<< HEAD
     public Integer getToAccountId() {
         return toAccountId;
     }
 
     public void setToAccountId(Integer toAccountId) {
         this.toAccountId = toAccountId;
-    }
-
-    public java.sql.Date getTime() {
-=======
-    public void setToAccountId(Integer toAccountId) {
-        this.toAccountId = toAccountId;
-    }
-  
-    public Integer getToAccountId() {
-        return toAccountId;
     }
 
     public Date getTime() {
->>>>>>> ec350be74a77872a13d9b2aaedea7c845166f66b
         return time;
     }
 
