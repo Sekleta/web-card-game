@@ -5,8 +5,6 @@ import org.junit.Test;
 import ua.od.game.model.MessageEntity;
 import ua.od.game.repository.dao.DbTest;
 
-import java.util.Date;
-
 import static org.junit.Assert.*;
 
 /**
@@ -16,7 +14,7 @@ import static org.junit.Assert.*;
 public class MessageDaoImplTest extends DbTest {
     MessageDaoImpl messageDao;
 
-    Date date = new Date(2019,11,12,00,53);
+    private static java.util.Date date = new java.util.Date();
 
     @Before
     public void init() {
