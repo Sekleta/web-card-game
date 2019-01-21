@@ -4,11 +4,12 @@ import ua.od.game.model.MessageEntity;
 import ua.od.game.repository.dao.MessageDao;
 import ua.od.game.repository.helper.SqlHelper;
 
+import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
-import java.sql.ResultSet;
 import java.util.LinkedList;
 
 public class MessageDaoImpl implements MessageDao {
@@ -21,14 +22,14 @@ public class MessageDaoImpl implements MessageDao {
         return SqlHelper.prepareStatement(GET_MESSAGES, pstmt -> {
             pstmt.setInt(1, fromAccountId);
             pstmt.setInt(2, toAccountId);
-            pstmt.setDate(3, new java.sql.Date(fromTime.getTime()));
+            pstmt.setTimestamp(3, new Timestamp(fromTime.getTime()));
             ResultSet rs = pstmt.executeQuery();
             List<MessageEntity> message = new LinkedList<>();
             while (rs.next()) {
                 message.add(new MessageEntity() {{
                     setFromAccountId(rs.getInt("from_account_id"));
                     setToAccountId(rs.getInt("to_account_id"));
-                    setTime(rs.getDate("time"));
+                    setTime(rs.getTimestamp("time"));
                     setText(rs.getString("text"));
                 }});
             }
@@ -52,3 +53,4 @@ public class MessageDaoImpl implements MessageDao {
         return isOk;
     }
 }
+
