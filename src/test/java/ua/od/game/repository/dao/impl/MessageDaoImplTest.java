@@ -5,6 +5,9 @@ import org.junit.Test;
 import ua.od.game.model.MessageEntity;
 import ua.od.game.repository.dao.DbTest;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -22,20 +25,23 @@ public class MessageDaoImplTest extends DbTest {
     }
 
     @Test
-    public void getMessageList() {
+    public void getMessageListTest() {
     }
 
     @Test
-    public void sendMessage() {
-        MessageEntity message = new MessageEntity() {{
+    public void sendMessageTest() {
+        MessageEntity messageEntity = new MessageEntity() {{
             setText("testMessage");
             setFromAccountId(111);
             setToAccountId(222);
             setTime(date);
         }};
 
-        Boolean result = messageDao.sendMessage(message);
-        System.out.println(result);
-        assertTrue(result);
+        List<MessageEntity> message = messageDao.getMessageList(111, 222, date);
+        for (int i = 0; i < message.size(); i++) {
+            if (message.get(i).equals(messageEntity.getText()))
+            System.out.println(message.get(i));
+    //        assertEquals(messageEntity.setText("testMessage"), );
+        }
     }
 }
